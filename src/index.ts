@@ -28,11 +28,6 @@ if (!day) {
   process.exit(1);
 }
 
-const inputPath = test
-  ? `./src/day-${day}/input-sample.txt`
-  : `./src/day-${day}/input.txt`;
-const input = await readFile(inputPath, 'utf8');
-
 const {
   solvePartOne,
   solvePartTwo,
@@ -48,6 +43,11 @@ if (!part || part === '1') {
   }
 
   checkSolverFunctionOrExit(solvePartOne);
+
+  const inputPath = test
+    ? `./src/day-${day}/input-sample-part-1.txt`
+    : `./src/day-${day}/input.txt`;
+  const input = await readFile(inputPath, 'utf8');
 
   console.time('Duration');
   const partOneAnswer = await solvePartOne(input);
@@ -73,6 +73,11 @@ if (!part || part === '2') {
   }
 
   checkSolverFunctionOrExit(solvePartTwo);
+
+  const inputPath = test
+    ? `./src/day-${day}/input-sample-part-2.txt`
+    : `./src/day-${day}/input.txt`;
+  const input = await readFile(inputPath, 'utf8');
 
   console.time('Duration');
   const partTwoAnswer = await solvePartTwo(input);

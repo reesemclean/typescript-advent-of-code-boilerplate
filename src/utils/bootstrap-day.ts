@@ -60,8 +60,11 @@ async function bootstrapDay(day: string): Promise<void> {
   const solutionFile = resolve(dayDir, 'solution.ts');
   await writeFile(solutionFile, defaultFileContent);
 
-  const inputSampleFile = resolve(dayDir, 'input-sample.txt');
-  await writeFile(inputSampleFile, ``);
+  const inputSamplePartOneFile = resolve(dayDir, 'input-sample-part-1.txt');
+  await writeFile(inputSamplePartOneFile, ``);
+
+  const inputSamplePartTwoFile = resolve(dayDir, 'input-sample-part-2.txt');
+  await writeFile(inputSamplePartTwoFile, ``);
 
   const inputRealFile = resolve(dayDir, 'input.txt');
   await writeFile(inputRealFile, ``);
