@@ -1,0 +1,35 @@
+{
+  "name": "advent-of-code-typescript-boilerplate",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "solve": "node --import tsx ./src/index.ts",
+    "watch": "node --import tsx --watch ./src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "bootstrap-day": "node --import tsx ./src/utils/bootstrap-day.ts",
+    "lint": "eslint ./src",
+    "prettier": "prettier --write ./",
+    "prepare": "husky install",
+    "commit": "commit"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "18.4.3",
+    "@commitlint/config-conventional": "18.4.3",
+    "@commitlint/prompt-cli": "18.4.3",
+    "@types/node": "20.10.1",
+    "@typescript-eslint/eslint-plugin": "6.13.1",
+    "@typescript-eslint/parser": "6.13.1",
+    "eslint": "^8.54.0",
+    "husky": "^8.0.3",
+    "lint-staged": "15.1.0",
+    "prettier": "3.1.0",
+    "tsx": "4.6.1",
+    "typescript": "5.3.2"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}
