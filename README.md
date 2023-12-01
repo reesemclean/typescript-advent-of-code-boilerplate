@@ -13,7 +13,7 @@ This repository sets up everything you need to start solving the Advent of Code 
 ## Quick Start
 
 > [!NOTE]  
-> Prerequisites: You must have Node installed. we use modern Node features so please check .nvmrc to make sure you are on a compatible version.
+> Prerequisites: You must have Node installed. We use modern Node features so please check .nvmrc to make sure you are on a compatible version.
 
 1. Clone this repository
 2. Run `npm install`
