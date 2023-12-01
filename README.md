@@ -118,3 +118,9 @@ To format your code, run the following command:
 ```bash
 npm run prettier
 ```
+
+## Contributing
+
+### Commit Messages
+
+This project uses [commitlint](https://commitlint.js.org/#/) to enforce conventional commit messages. Run `npm run commit` and follow the prompt to create a commit message.
