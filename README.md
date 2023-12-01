@@ -25,7 +25,7 @@ This repository sets up everything you need to start solving the Advent of Code 
 
 ### `./src/day-x/solution.ts`
 
-Must export a functions named `solvePartOne` and `solvePartTwo` that take in a string and return a `string` or `Promise<string>`
+Must export functions named `solvePartOne` and `solvePartTwo` that each take a string as args and returns a `string` or `Promise<string>`
 (this function can be async). If you want to use test mode to run your solution against the sample input, you will need to export a string named `expectedPartOneSampleOutput` and `expectedPartTwoSampleOutput` that contains the expected output for the sample input.
 
 ### `./src/day-x/input.txt`
@@ -58,7 +58,8 @@ npm run solve -- --day 1 --part 1
 
 ### Watch Mode
 
-To run your solution in watch mode, enter your data into the input.txt file and run the following command:
+To run your solution in watch mode (so that your solutions rerun whenever you make changes)
+enter your data into the input.txt file and run the following command:
 
 ```bash
 npm run watch -- --day 1 --part 1
@@ -70,7 +71,7 @@ This supports the same --part flag as solve mode.
 
 You can run your solution against the sample input via the --test flag. This works in both watch and solve mode.
 
-You will need to fill out the `expectedSampleOutput` export string in the part-x.ts files with
+You will need to fill out the `expectedPartOneSampleOutput` and `expectedPartTwoSampleOutput` exported string in the solution.ts file with
 the expected output for the sample input as well as fill in the `input-sample-part-1.txt` and `input-sample-part-2.txt` files with your sample input.
 
 ```bash
