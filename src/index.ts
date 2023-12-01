@@ -53,7 +53,7 @@ if (!part || part === '1') {
   const partOneAnswer = await solvePartOne(input);
 
   if (test) {
-    assertTestResult(partOneAnswer, expectedPartOneSampleOutput);
+    assertTestResult(partOneAnswer, expectedPartOneSampleOutput, '1');
   } else {
     console.log(`Answer: ${partOneAnswer}`);
   }
@@ -83,7 +83,7 @@ if (!part || part === '2') {
   const partTwoAnswer = await solvePartTwo(input);
 
   if (test) {
-    assertTestResult(partTwoAnswer, expectedPartTwoSampleOutput);
+    assertTestResult(partTwoAnswer, expectedPartTwoSampleOutput, '2');
   } else {
     console.log(`Answer: ${partTwoAnswer}`);
   }
@@ -91,14 +91,14 @@ if (!part || part === '2') {
   console.timeEnd('Duration');
 }
 
-function assertTestResult(actual: unknown, expected: unknown) {
+function assertTestResult(actual: unknown, expected: unknown, part: string) {
   if (actual === expected) {
     console.log(
-      `Day ${day}, part 1 test passed! Expected: "${expected}", actual: "${actual}"`,
+      `Day ${day}, part ${part} test passed! Expected: "${expected}", actual: "${actual}"`,
     );
   } else {
     console.error(
-      `Day ${day}, part 1 test failed! Expected: "${expected}", actual: "${actual}"`,
+      `Day ${day}, part ${part} test failed! Expected: "${expected}", actual: "${actual}"`,
     );
   }
 }
