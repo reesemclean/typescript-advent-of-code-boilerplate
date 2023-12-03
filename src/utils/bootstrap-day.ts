@@ -1,7 +1,11 @@
 import { parseArgs } from 'node:util';
-import { mkdir, writeFile, readdir } from 'fs/promises';
+import { mkdir, writeFile, readdir, rm } from 'fs/promises';
 import { resolve } from 'path';
 import { get } from 'https';
+import { createInterface } from 'readline/promises';
+import { stdin, stdout } from 'process';
+
+let previousOverwriteAnswer: 'all' | 'skip' | null = null;
 
 const {
   values: { day: parsedDay, all },
@@ -61,12 +65,27 @@ async function bootstrapDay(day: string): Promise<void> {
     await mkdir(dayDir);
   } catch (e) {
     if (e && typeof e === 'object' && 'code' in e && e.code === 'EEXIST') {
-      console.error(`A folder for day ${day} already exists. Skipping...`);
+      let answer: 'yes' | 'no' | 'skip' | 'all' | null =
+        previousOverwriteAnswer;
+
+      if (previousOverwriteAnswer) {
+        answer = previousOverwriteAnswer;
+      } else {
+        answer = await promptForOverwrite();
+      }
+
+      if (answer === 'yes' || answer === 'all') {
+        console.log(`Overwriting day ${day}...`);
+        await rm(dayDir, { recursive: true, force: true });
+        await mkdir(dayDir);
+      } else {
+        console.log(`Skipping day ${day}...`);
+        return;
+      }
     } else {
       console.error(e);
+      return;
     }
-
-    return;
   }
 
   const solutionFile = resolve(dayDir, 'solution.ts');
@@ -98,6 +117,31 @@ async function bootstrapDay(day: string): Promise<void> {
   }
 
   await writeFile(inputRealFile, input);
+
+  console.log(`Directory ./src/day-${day} was created successfully.`);
+}
+
+async function promptForOverwrite(): Promise<'yes' | 'no' | 'all' | 'skip'> {
+  const rl = createInterface({ input: stdin, output: stdout });
+  const rawAnswer = await rl.question(
+    'A folder for day ${day} already exists. Do you want to overwrite it? (y)es/(n)o/(a)ll/(s)kip)',
+  );
+  rl.close();
+
+  if (rawAnswer.startsWith('s')) {
+    previousOverwriteAnswer = 'skip';
+    return 'skip';
+  } else if (rawAnswer.startsWith('a')) {
+    previousOverwriteAnswer = 'all';
+    return 'all';
+  } else if (rawAnswer.startsWith('n')) {
+    return 'no';
+  } else if (rawAnswer.startsWith('y')) {
+    return 'yes';
+  } else {
+    console.log('Invalid answer, try again...');
+    return await promptForOverwrite();
+  }
 }
 
 async function fetchInputIfConfigured(day: string): Promise<string | null> {
