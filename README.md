@@ -17,12 +17,21 @@ This repository sets up everything you need to start solving the Advent of Code 
 
 1. Clone this repository
 2. Run `npm install`
-3. Run `npm run bootstrap-day -- --all` to create the files and folders for all the days
-4. Copy and Paste your input and sample input into the `./src/day-x/input.txt` and `./src/day-x/input-sample-part-1.txt` files.
-5. Go to `./src/day-x/solution.ts` and enter the `expectedPartOneSampleOutput` for your sample input data.
-6. Run `npm run watch -- --day 1 --part 1 --test` to test your solution for day 1 against the sample input.
-7. Code your solution in the `solvePartOne` function of `./src/day-x/solution.ts`
-8. Run `npm run solve -- --day 1 --part 1` to run your solution against the input data.
+3. (Optionally) Rename the `.env.sample` file to `.env` and fill in your session cookie from adventofcode.com and the year. This will allow you to automatically fetch your input data instead of needing to copy and paste it into the input.txt file.
+4. Run `npm run bootstrap-day` to create the files and folders for the first day. (pass `-- --day X` to create the files and folders for a specific day).
+5. Copy and Paste your input (if you didn't complete step 3) and sample input into the `./src/day-x/input.txt` and `./src/day-x/input-sample-part-1.txt` files.
+6. Go to `./src/day-x/solution.ts` and enter the `expectedPartOneSampleOutput` for your sample input data.
+7. Run `npm run watch -- --day 1 --part 1 --test` to test your solution for day 1 against the sample input.
+8. Code your solution in the `solvePartOne` function of `./src/day-x/solution.ts`
+9. Run `npm run solve -- --day 1 --part 1` to run your solution against the input data.
+10. Each day, run `npm run bootstrap-day` to create the files for the next day and continue solving the puzzles.
+
+## Fetching Input (Optional)
+
+If you want to automatically fetch your input data, you will need the following environment variables set:
+
+`AOC_SESSION` - Your session cookie from adventofcode.com. You can find this by logging into adventofcode.com and looking at the value of the `session` cookie.
+`AOC_YEAR` - The year you are solving for.
 
 ## Expected Folder Structure
 

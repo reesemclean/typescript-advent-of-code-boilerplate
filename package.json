@@ -7,7 +7,7 @@
     "solve": "node --import tsx ./src/index.ts",
     "watch": "node --import tsx --watch ./src/index.ts",
     "typecheck": "tsc --noEmit",
-    "bootstrap-day": "node --import tsx ./src/utils/bootstrap-day.ts",
+    "bootstrap-day": "node  --env-file=.env --import tsx ./src/utils/bootstrap-day.ts",
     "lint": "eslint ./src",
     "prettier": "prettier --write ./",
     "prepare": "husky install",
