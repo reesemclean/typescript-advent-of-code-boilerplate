@@ -192,10 +192,12 @@ async function fetchInputIfConfigured(day: string): Promise<string | null> {
                 console.error(
                   'This may be because the AOC_SESSION value set in your .env file is invalid.',
                 );
+                break;
               case 404:
                 console.error(
                   'Input not available yet, try again later or make sure you have the correct year configured in your .env file',
                 );
+                break;
               default:
                 console.error(
                   'Unknown error. Please check your .env file to make sure it is configured correctly.',
