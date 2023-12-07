@@ -181,7 +181,7 @@ async function fetchInputIfConfigured(day: string): Promise<string | null> {
         res.on('end', () => {
           if (res.statusCode === 200) {
             console.log('Fetched input from adventofcode.com...');
-            resolve(data);
+            resolve(data.trim());
           } else {
             console.error(
               `Failed to fetch input from adventofcode.com... status: ${res.statusCode}: ${res.statusMessage}`,
